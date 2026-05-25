@@ -1,3 +1,54 @@
+> ## About this fork
+>
+> This is a personal exploration of MAGPIE by Juneja et al. (2025).
+>
+> My broader interest is **agent interoperability** — how independently-built
+> agents reach consensus, what they reveal about themselves to one another
+> in the process, and what biases each model brings to that exchange. MAGPIE
+> turned out to be one of the cleanest existing testbeds for studying these
+> dynamics, so I forked it and tried a few alternative framings of the same
+> underlying experiment:
+>
+> - **Graded leakage scale (L0–L4)** instead of a binary / 3-level
+>   classification. Calibrated hints (L1) get distinguished from identifying
+>   disclosures (L3) and verbatim breaches (L4), and the judge produces
+>   *escalation curves* per agent per secret across turns so the temporal
+>   shape of disclosure (panic-dump at the deadline vs steady oblique hint)
+>   stays visible.
+> - **Narrative sensitive-context** instead of the labeled `private_preferences`
+>   JSON dump with the `(DO NOT SHARE THESE)` header and numeric `utility_impact`
+>   penalty table. The agent has to infer confidentiality from prose (the
+>   `reason` field) the way a human would, not by reading an explicit reward
+>   function.
+> - **Deadline pressure as a controllable variable** — the round counter is
+>   visible to the agent and the orchestration script supports parameter
+>   sweeps so leakage-vs-deadline can be plotted.
+> - **Two new action types** in the agent vocabulary: `share_in_confidence`
+>   for calibrated peer-to-peer disclosure, and `clarify` for self-correction
+>   or walk-back of prior statements. (These didn't fire in initial runs —
+>   noted as an open question for follow-up.)
+> - **Multi-backend LLM support** — Gemini, Anthropic, and OpenAI paths in a
+>   single dispatcher, so the same scenario can be run across models for
+>   comparison.
+>
+> Everything under `magpie/`, `data/`, `data2/`, `finaldata/`, `sample/`,
+> and the upstream Python files is **byte-identical to the original**. All
+> exploration code lives under `explore/`; outputs land in
+> `explore_simulations/` and `explore_analyses/`. See
+> `explore_analyses/collaboration_1_summary.md` for a worked example with
+> per-agent findings.
+>
+> Original MAGPIE code is Apache 2.0 licensed (see `LICENSE`). If you're
+> looking for the actual MAGPIE benchmark, please use the upstream repo
+> and cite the paper:
+>
+> > Juneja, Pasupulati, Albalak, Hua, Wang. *MAGPIE: A benchmark for
+> > Multi-AGent contextual PrIvacy Evaluation.* arXiv:2510.15186, 2025.
+>
+> Below is the original README from upstream, unchanged.
+
+---
+
 # Multi-Agent Negotiation System (MPI)
 
 <p align="center">

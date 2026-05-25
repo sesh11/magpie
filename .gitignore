@@ -3,6 +3,14 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+# macOS
+.DS_Store
+
+# Exploration outputs — full transcripts are large (multi-MB) and
+# recoverable by re-running the sweep. Analyses (small JSON + summary md)
+# are kept under explore_analyses/.
+explore_simulations/
+
 # C extensions
 *.so
 
